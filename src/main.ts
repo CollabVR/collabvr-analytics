@@ -5,12 +5,11 @@ import { ConfigService } from '@nestjs/config';
 import { TcpOptions, Transport } from '@nestjs/microservices';
 
 async function bootstrap() {
-  const port = Number(new ConfigService().get('PORT'));
-  const host = new ConfigService().get('HOST');
+  const port = 3000;
   const app = await NestFactory.createMicroservice(AppModule, {
     transport: Transport.TCP,
     options: {
-      host: host,
+      host: 'analytics_service',
       port: port,
     },
   } as TcpOptions);
